@@ -1,0 +1,34 @@
+[
+  {
+    "id": "email",
+    "name": "Email",
+    "url": "mailto:akhileshbisht2020@gmail.com",
+    "icon": "FiMail",
+    "order": 0,
+    "published": true
+  },
+  {
+    "id": "linkedin",
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/akhilesh-bisht/",
+    "icon": "FaLinkedin",
+    "order": 1,
+    "published": true
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "url": "https://github.com/akhilesh-bisht",
+    "icon": "FaGithub",
+    "order": 2,
+    "published": true
+  },
+  {
+    "id": "portfolio",
+    "name": "Portfolio",
+    "url": "https://akhilesj.me",
+    "icon": "FiGlobe",
+    "order": 3,
+    "published": true
+  }
+]

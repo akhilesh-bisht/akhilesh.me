@@ -1,0 +1,40 @@
+[
+  {
+    "id": "vaishalitech-2025",
+    "company": "VaishaliTech",
+    "position": "Full Stack Developer Intern",
+    "period": "May 2025 – Sept 2025",
+    "location": "Remote",
+    "workType": "remote",
+    "description": [
+      "Developed a full-featured laundry management web application with real-time order tracking, secure payments, and dynamic dashboards.",
+      "Built responsive, mobile-friendly UI using React and Tailwind CSS for seamless user experience.",
+      "Integrated RESTful APIs, optimizing page speed by 20% for faster load times.",
+      "Designed scalable MongoDB schemas to manage users, orders, and payments efficiently.",
+      "Implemented JWT-based authentication for secure user sessions and initiated planning for real-time notifications."
+    ],
+    "current": false,
+    "order": 0,
+    "published": true,
+    "link": null
+  },
+  {
+    "id": "kisancash-2025",
+    "company": "KisanCash",
+    "position": "Frontend Developer Intern",
+    "period": "Jan 2025 – April 2025",
+    "location": "Remote",
+    "workType": "remote",
+    "description": [
+      "Built and enhanced frontend features for a fintech platform supporting rural farmers with intuitive, user-friendly design.",
+      "Designed interactive dashboards for loan management and payment tracking, improving user accessibility and engagement.",
+      "Integrated Graph.js for visualizing real-time financial data, providing actionable insights for farmers and stakeholders.",
+      "Developed downloadable PDF invoices, enabling farmers to manage offline records and ensure better financial transparency.",
+      "Added PWA features, enabling offline mode and seamless home screen installation for improved accessibility in low-network areas."
+    ],
+    "current": false,
+    "order": 1,
+    "published": true,
+    "link": null
+  }
+]
