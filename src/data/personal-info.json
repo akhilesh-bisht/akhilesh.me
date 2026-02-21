@@ -1,0 +1,21 @@
+{
+  "hero_title": "Hi, I'm Akhilesh Bisht",
+  "hero_description": "Full Stack Developer from Dehradun, building responsive web apps that scale from concept to deployment.",
+  "hero_subtitle": "Dehradun, Uttarakhand, India",
+  "hero_contact": "+91-6399085419",
+  "hero_email": "akhileshbisht2020@gmail.com",
+  "summary": "Full Stack Developer with hands-on experience in building responsive, scalable, and secure web applications from concept to deployment. Proficient in modern frontend frameworks like React.js and state management with Redux Toolkit, along with backend technologies such as Node.js, Express.js, and MongoDB. Skilled in crafting user-friendly interfaces with Tailwind CSS and Bootstrap, and implementing RESTful APIs, JWT authentication, and performance-optimized architectures. Experienced in working in Agile remote teams, collaborating through Git, GitHub, and tools like Postman and Multer.",
+  "about_me_paragraph_1": "I'm a Full Stack Developer focused on building real-world solutions. With expertise in React.js, Next.js, Node.js, and MongoDB, I ship end-to-end features from idea to production—from laundry management systems with real-time tracking to fintech dashboards for rural farmers.",
+  "about_me_paragraph_2": "I care about performance, clean code, and user experience. Whether it's JWT authentication, PWA features for low-connectivity areas, or integrating AI APIs for Hindi-language chatbots—I enjoy solving problems that make a difference.",
+  "contact_description": "Let's build something together. Reach out on [Email](mailto:akhileshbisht2020@gmail.com), [LinkedIn](https://linkedin.com/in/akhilesh-bisht), or [GitHub](https://github.com/AkhileshBisht).",
+  "signature_name": "Akhilesh Bisht",
+  "meta_title": "Akhilesh Bisht",
+  "meta_description": "Full Stack Developer specializing in React, Node.js, MongoDB. Building scalable web apps with RESTful APIs, JWT auth, and modern UI.",
+  "job_title": "Full Stack Developer",
+  "skills": {
+    "frontend": ["HTML", "CSS", "JavaScript", "React.js", "Next.js", "Redux Toolkit", "Tailwind CSS", "Bootstrap", "ShadCN UI"],
+    "backend": ["Node.js", "Express.js", "MongoDB", "RESTful APIs"],
+    "tools": ["Git", "GitHub", "Postman"],
+    "practices": ["Responsive Design", "API Integration", "PWA", "Performance Optimization"]
+  }
+}

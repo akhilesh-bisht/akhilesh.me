@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ai-chatbot-hindi",
+    "title": "AI Chatbot (Hindi Language Support)",
+    "period": "2025",
+    "description": "Built an AI-powered chatbot that understands and responds in Hindi using OpenAI and Gemini APIs. Integrated file uploads (PDF, CSV, TXT) using Multer to provide contextual input. Parsed uploaded files to deliver accurate, context-aware responses based on the contents.",
+    "link": "",
+    "github": "",
+    "type": "AI",
+    "technologies": ["react", "node", "ai", "mongodb"],
+    "featured": true,
+    "order": 0,
+    "published": true
+  },
+  {
+    "id": "visual-email-builder",
+    "title": "Visual Email Sequence Builder",
+    "period": "2025",
+    "description": "Developed a visual drag-and-drop tool to design and automate email campaigns. Secured user sessions with JWT-based authentication. Scheduled emails using Agenda.js and automated campaigns with Nodemailer. Supported dynamic campaign blocks like Delay, Email, and Lead Source.",
+    "link": "",
+    "github": "",
+    "type": "Full Stack",
+    "technologies": ["react", "node", "mongodb"],
+    "featured": true,
+    "order": 1,
+    "published": true
+  }
+]
