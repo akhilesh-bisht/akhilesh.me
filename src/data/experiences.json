@@ -1,40 +1,51 @@
 [
   {
-    "id": "vaishalitech-2025",
-    "company": "VaishaliTech",
-    "position": "Full Stack Developer Intern",
-    "period": "May 2025 – Sept 2025",
-    "location": "Remote",
-    "workType": "remote",
+    "id": "scriptguru-digital-solutions-2025",
+    "company": "Scriptguru Digital Solutions",
+    "position": "Full Stack Developer",
+    "employmentType": "Full time",
+    "period": "Sep 2025 – Present",
+    "location": "Dehradun, Uttarakhand, India",
+    "workType": "onsite",
     "description": [
-      "Developed a full-featured laundry management web application with real-time order tracking, secure payments, and dynamic dashboards.",
-      "Built responsive, mobile-friendly UI using React and Tailwind CSS for seamless user experience.",
-      "Integrated RESTful APIs, optimizing page speed by 20% for faster load times.",
-      "Designed scalable MongoDB schemas to manage users, orders, and payments efficiently.",
-      "Implemented JWT-based authentication for secure user sessions and initiated planning for real-time notifications."
+      "Worked on multiple production-level projects with private codebases, building scalable web applications using React, Next.js, and TypeScript.",
+      "Developed and integrated backend services using Node.js and MongoDB, and implemented AI-powered features using OpenAI APIs."
     ],
-    "current": false,
+    "current": true,
     "order": 0,
     "published": true,
-    "link": null
+    "link": "https://scriptgurudigitalsolutions.com"
   },
   {
-    "id": "kisancash-2025",
-    "company": "KisanCash",
-    "position": "Frontend Developer Intern",
-    "period": "Jan 2025 – April 2025",
-    "location": "Remote",
+    "id": "vaishalitech-2025",
+    "company": "VaishaliTech",
+    "position": "Full Stack Engineer",
+    "employmentType": "Internship",
+    "period": "May 2025 – Sep 2025",
+    "location": "Remote (India)",
     "workType": "remote",
     "description": [
-      "Built and enhanced frontend features for a fintech platform supporting rural farmers with intuitive, user-friendly design.",
-      "Designed interactive dashboards for loan management and payment tracking, improving user accessibility and engagement.",
-      "Integrated Graph.js for visualizing real-time financial data, providing actionable insights for farmers and stakeholders.",
-      "Developed downloadable PDF invoices, enabling farmers to manage offline records and ensure better financial transparency.",
-      "Added PWA features, enabling offline mode and seamless home screen installation for improved accessibility in low-network areas."
+      "Built responsive user interfaces and RESTful APIs using React, Node.js, Express.js, and MongoDB."
     ],
     "current": false,
     "order": 1,
     "published": true,
-    "link": null
+    "link": "https://vaishalitech.in/"
+  },
+  {
+    "id": "internship-studio-2024",
+    "company": "Internship Studio",
+    "position": "Frontend Developer",
+    "employmentType": "Apprenticeship",
+    "period": "May 2024 – Jul 2024",
+    "location": "Remote",
+    "workType": "remote",
+    "description": [
+      "Collaborated on UI improvements and optimized performance for better user experience."
+    ],
+    "current": false,
+    "order": 2,
+    "published": true,
+    "link": "https://internshipstudio.com/"
   }
 ]
