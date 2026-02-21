@@ -6,7 +6,8 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import personalInfo from "@/data/personal-info.json";
 import socialLinks from "@/data/social-links.json";
 import Image from "next/image";
-import Link from "next/link";
+import { TechStack } from "@/components/ui/tech-badge";
+import { GitHubActivityBlock } from "@/components/GitHubActivityBlock";
 
 const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
   FiMail,
@@ -15,45 +16,35 @@ const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
   FaGithub,
 };
 
+const SKILL_ICONS = ["react", "next", "node", "mongodb", "typescript", "javascript", "tailwind", "github"];
+
 export default function Home() {
   const heroSocialLinks = socialLinks.filter((link) => link.published);
-  const skills = personalInfo.skills as {
-    frontend?: string[];
-    backend?: string[];
-    tools?: string[];
-    practices?: string[];
-  };
 
   return (
     <PageTransition>
       <div className="container max-w-3xl mx-auto px-4 sm:px-6">
-        {/* Hero - flex left text, right logo */}
-        <section className="mb-20 flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-12">
+        {/* Hero: Image left, name + about right */}
+        <section className="mb-12 flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-10">
+          <div className="flex-shrink-0">
+            <div className="overflow-hidden rounded-xl w-32 h-32 sm:w-40 sm:h-40 shadow-lg">
+              <Image
+                src="/Anime%20Hypio%20Kids.webp"
+                height={160}
+                width={160}
+                alt="Akhilesh Bisht"
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
           <div className="flex-1 min-w-0">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">
               {personalInfo.hero_title}
             </h1>
-            <p className="text-muted-foreground mt-3 text-lg">
-              {(personalInfo as { hero_subtitle?: string }).hero_subtitle ||
-                "Full Stack Developer"}
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {personalInfo.about_me_paragraph_1}
             </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-sm text-muted-foreground">
-              {(personalInfo as { hero_contact?: string }).hero_contact && (
-                <span>{(personalInfo as { hero_contact?: string }).hero_contact}</span>
-              )}
-              {(personalInfo as { hero_email?: string }).hero_email && (
-                <>
-                  <span className="hidden sm:inline">|</span>
-                  <a
-                    href={`mailto:${(personalInfo as { hero_email?: string }).hero_email}`}
-                    className="hover:text-foreground transition-colors"
-                  >
-                    {(personalInfo as { hero_email?: string }).hero_email}
-                  </a>
-                </>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-2 mt-5">
+            <div className="flex flex-wrap gap-2">
               {heroSocialLinks.map((link) => {
                 const IconComponent = IconMap[link.icon as keyof typeof IconMap];
                 return (
@@ -62,7 +53,7 @@ export default function Home() {
                     href={link.url}
                     target={link.url.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {IconComponent && <IconComponent className="w-4 h-4" />}
                     {link.name}
@@ -71,108 +62,20 @@ export default function Home() {
               })}
             </div>
           </div>
-          <div className="flex-shrink-0">
-            <div className="overflow-hidden rounded-2xl w-28 h-28 md:w-36 md:h-36 shadow-xl">
-              <Image
-                src="/Anime%20Hypio%20Kids.webp"
-                height={144}
-                width={144}
-                alt="Akhilesh Bisht"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
         </section>
 
-        {/* About */}
-        <section className="mb-16">
+        {/* Skills: Icons in a row */}
+        <section className="mb-12">
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-            About
+            Skills
           </h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>{personalInfo.about_me_paragraph_1}</p>
-            <p>{personalInfo.about_me_paragraph_2}</p>
+          <div className="flex flex-wrap gap-6 [&_span]:text-xl">
+            <TechStack technologies={SKILL_ICONS} showNames={false} />
           </div>
         </section>
 
-        {/* Skills */}
-        {skills && Object.keys(skills).length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-              Skills
-            </h2>
-            <div className="space-y-4">
-              {skills.frontend && skills.frontend.length > 0 && (
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground/80 mb-2">
-                    Frontend
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {skills.frontend.join(", ")}
-                  </p>
-                </div>
-              )}
-              {skills.backend && skills.backend.length > 0 && (
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground/80 mb-2">
-                    Backend
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {skills.backend.join(", ")}
-                  </p>
-                </div>
-              )}
-              {skills.tools && skills.tools.length > 0 && (
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground/80 mb-2">
-                    Tools & Libraries
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {skills.tools.join(", ")}
-                  </p>
-                </div>
-              )}
-              {skills.practices && skills.practices.length > 0 && (
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground/80 mb-2">
-                    Best Practices
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {skills.practices.join(", ")}
-                  </p>
-                </div>
-              )}
-            </div>
-          </section>
-        )}
-
-        {/* Quick links */}
-        <section className="mb-16">
-          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-            Explore
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/experience"
-              className="text-sm font-medium text-accent hover:underline"
-            >
-              Experience →
-            </Link>
-            <Link
-              href="/projects"
-              className="text-sm font-medium text-accent hover:underline"
-            >
-              Projects →
-            </Link>
-            <Link
-              href="/github"
-              className="text-sm font-medium text-accent hover:underline"
-            >
-              GitHub →
-            </Link>
-          </div>
-        </section>
-
+        {/* GitHub Activity */}
+        <GitHubActivityBlock />
       </div>
     </PageTransition>
   );

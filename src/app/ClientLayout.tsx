@@ -5,14 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
-import { FiSun, FiMoon, FiArrowUp, FiBriefcase, FiCode, FiMenu, FiX } from "react-icons/fi";
-import { FaGithub } from "react-icons/fa";
+import { FiSun, FiMoon, FiArrowUp, FiMenu, FiX } from "react-icons/fi";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home", icon: null },
-  { href: "/experience", label: "Experience", icon: FiBriefcase },
-  { href: "/projects", label: "Projects", icon: FiCode },
-  { href: "/github", label: "GitHub", icon: FaGithub },
+  { href: "/experience", label: "Work", icon: null },
+  { href: "/projects", label: "Projects", icon: null },
+  { href: "/github", label: "GitHub", icon: null },
 ];
 
 function Navigation() {
@@ -26,8 +24,6 @@ function Navigation() {
   const themeInitialized = useRef(false);
 
   const currentPath = pathname === "/" ? "/" : pathname.replace(/\/$/, "");
-  const currentPageLabel = currentPath.split("/").filter(Boolean).pop() || "";
-  const isMainNav = NAV_ITEMS.some((item) => item.href === currentPath);
 
   useEffect(() => {
     if (themeInitialized.current) return;
@@ -77,62 +73,44 @@ function Navigation() {
 
   if (!mounted) return null;
 
-  const NavLinks = () => (
-    <>
-      {NAV_ITEMS.map((item) => {
-        const isActive = currentPath === item.href;
-        const isHome = item.href === "/";
-        const Icon = item.icon;
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={() => setMobileOpen(false)}
-            className={cn(
-              "relative py-2 px-3 text-sm rounded-md transition-colors",
-              isHome ? "font-semibold" : "font-medium",
-              isActive ? "text-foreground bg-muted/50" : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
-            )}
-          >
-            <span className="flex items-center gap-2">
-              {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
-              {item.label}
-            </span>
-          </Link>
-        );
-      })}
-    </>
-  );
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-4 py-3">
       <nav
         className={cn(
-          "flex items-center justify-between gap-4 w-full max-w-4xl mx-auto px-4 py-3 rounded-xl",
+          "flex items-center justify-between gap-4 w-full max-w-3xl mx-auto px-4 py-3 rounded-xl",
           "bg-background/80 backdrop-blur-md border border-border/50",
           scrolled && "shadow-lg shadow-black/5 dark:shadow-black/10",
         )}
       >
         <Link
           href="/"
-          className="text-sm font-bold text-foreground shrink-0"
+          className="flex items-center gap-2 shrink-0"
         >
-          Akhilesh .me
+          <img
+            src="/Anime%20Hypio%20Kids.webp"
+            alt="Akhilesh Bisht"
+            className="w-8 h-8 rounded-lg object-cover"
+          />
+          <span className="text-sm font-bold text-foreground hidden sm:inline">
+            Akhilesh .me
+          </span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
-          {isMainNav ? (
-            <NavLinks />
-          ) : (
+        <div className="hidden md:flex items-center gap-6">
+          {NAV_ITEMS.map((item) => (
             <Link
-              href="/"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-md transition-colors"
+              key={item.href}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className={cn(
+                "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
+                currentPath === item.href && "text-foreground"
+              )}
             >
-              <span className="font-semibold text-foreground">/</span>
-              <span className="capitalize">{currentPageLabel}</span>
+              {item.label}
             </Link>
-          )}
+          ))}
         </div>
 
         <div className="flex items-center gap-1">
@@ -170,7 +148,21 @@ function Navigation() {
       {mobileOpen && (
         <div className="md:hidden mt-2 mx-auto max-w-4xl px-4 py-4 rounded-xl bg-background/95 backdrop-blur-md border border-border/50 shadow-xl">
           <div className="flex flex-col gap-1">
-            <NavLinks />
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "py-2 px-3 text-sm rounded-md transition-colors",
+                  currentPath === item.href
+                    ? "text-foreground bg-muted/50"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       )}
