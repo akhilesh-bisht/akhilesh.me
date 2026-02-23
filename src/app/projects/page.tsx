@@ -18,7 +18,7 @@ export default function Projects() {
 
   return (
     <PageTransition>
-      <div className="container max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="container max-w-3xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Projects

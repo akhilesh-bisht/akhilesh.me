@@ -80,7 +80,7 @@ export default function Home() {
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
             Skills
           </h2>
-          <div className="flex flex-wrap gap-6 [&_span]:text-xl">
+          <div className="flex flex-wrap gap-3 [&_span]:text-xl">
             <TechStack technologies={SKILL_ICONS} showNames={false} />
           </div>
         </section>
