@@ -33,7 +33,7 @@ export function GitHubActivityBlock() {
     async function fetchData() {
       try {
         const res = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${GITHUB_USER}?y=last`
+          `https://github-contributions-api.jogruber.de/v4/${GITHUB_USER}?y=last`,
         );
         if (res.ok) {
           const data: ContributionsResponse = await res.json();
@@ -96,21 +96,24 @@ export function GitHubActivityBlock() {
       <p className="text-sm text-muted-foreground mb-2">
         {GITHUB_USER}&apos;s coding journey over the past year
       </p>
-        <p className="text-sm font-medium mb-4">
-        Total: <strong>{totalContributions.toLocaleString()}</strong> contributions
+      <p className="text-sm font-medium mb-4">
+        Total: <strong>{totalContributions.toLocaleString()}</strong>{" "}
+        contributions
       </p>
       <div className="overflow-x-auto">
         <div className="flex gap-[3px] min-w-max">
           {weekChunks.map((week, wi) => (
             <div key={wi} className="flex flex-col gap-[3px]">
-              {week.map((c) => (
+              {week?.map((c, index) => (
                 <div
-                  key={c.date}
+                  key={`${c.date}+ ${index}`}
                   className={cn(
                     "w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-[2px]",
-                    LEVEL_COLORS[c.level]
+                    LEVEL_COLORS[c.level],
                   )}
-                  title={c.date ? `${c.date}: ${c.count} contributions` : undefined}
+                  title={
+                    c.date ? `${c.date}: ${c.count} contributions` : undefined
+                  }
                 />
               ))}
             </div>

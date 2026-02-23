@@ -3,13 +3,22 @@
     "id": "scriptguru-digital-solutions-2025",
     "company": "Scriptguru Digital Solutions",
     "position": "Full Stack Developer",
-    "employmentType": "Full time",
+    "employmentType": "Full Time",
     "period": "Sep 2025 – Present",
     "location": "Dehradun, Uttarakhand, India",
     "workType": "onsite",
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "OpenAI API"
+    ],
     "description": [
-      "Worked on multiple production-level projects with private codebases, building scalable web applications using React, Next.js, and TypeScript.",
-      "Developed and integrated backend services using Node.js and MongoDB, and implemented AI-powered features using OpenAI APIs."
+      "Developed and maintained multiple production-grade applications with private codebases using React, Next.js, and TypeScript.",
+      "Designed and integrated backend services using Node.js and MongoDB, including AI-powered features leveraging OpenAI APIs.",
+      "Collaborated closely with designers and stakeholders to deliver scalable, high-performance solutions."
     ],
     "current": true,
     "order": 0,
@@ -24,8 +33,10 @@
     "period": "May 2025 – Sep 2025",
     "location": "Remote (India)",
     "workType": "remote",
+    "technologies": ["React", "Node.js", "Express.js", "MongoDB", "REST APIs"],
     "description": [
-      "Built responsive user interfaces and RESTful APIs using React, Node.js, Express.js, and MongoDB."
+      "Built responsive user interfaces and RESTful APIs using React, Node.js, Express.js, and MongoDB.",
+      "Worked in a remote-first environment following clean code practices and agile workflows."
     ],
     "current": false,
     "order": 1,
@@ -40,8 +51,10 @@
     "period": "May 2024 – Jul 2024",
     "location": "Remote",
     "workType": "remote",
+    "technologies": ["HTML", "CSS", "JavaScript", "React"],
     "description": [
-      "Collaborated on UI improvements and optimized performance for better user experience."
+      "Collaborated on frontend UI improvements and performance optimizations to enhance overall user experience.",
+      "Implemented reusable components and improved layout consistency across pages."
     ],
     "current": false,
     "order": 2,
