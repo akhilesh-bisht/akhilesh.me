@@ -1,14 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FiGlobe,
-  FiGithub,
-  FiTwitter,
-  FiLinkedin,
-  FiChevronDown,
+  FiCalendar,
   FiMapPin,
+  FiChevronDown,
+  FiExternalLink,
 } from "react-icons/fi";
 import {
   SiReact,
@@ -16,166 +15,183 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiNodedotjs,
+  SiJavascript,
+  SiMongodb,
+  SiDocker,
+  SiOpenai,
   SiPostgresql,
   SiPrisma,
-  SiDocker,
 } from "react-icons/si";
+
 import experiencesData from "@/data/experiences.json";
 import { PageTransition } from "@/components/ui/page-transition";
 
-const getTechIcon = (tech: string) => {
-  const icons: Record<string, { icon: any; color: string }> = {
-    React: { icon: SiReact, color: "text-[#61DAFB]" },
-    Nextjs: { icon: SiNextdotjs, color: "text-white" },
-    Tailwind: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
-    TypeScript: { icon: SiTypescript, color: "text-[#3178C6]" },
-    Node: { icon: SiNodedotjs, color: "text-[#339933]" },
-    PostgreSQL: { icon: SiPostgresql, color: "text-[#4169E1]" },
-    Prisma: { icon: SiPrisma, color: "text-[#2D3748]" },
-    Docker: { icon: SiDocker, color: "text-[#2496ED]" },
-  };
-  return icons[tech] || { icon: null, color: "" };
+/* ---------------- ICON MAP ---------------- */
+
+const techIcons: Record<string, { icon: any; color: string }> = {
+  React: { icon: SiReact, color: "text-[#61DAFB]" },
+  "Next.js": { icon: SiNextdotjs, color: "text-foreground" },
+  Tailwind: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
+  TypeScript: { icon: SiTypescript, color: "text-[#3178C6]" },
+  JavaScript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
+  Node: { icon: SiNodedotjs, color: "text-[#339933]" },
+  MongoDB: { icon: SiMongodb, color: "text-[#47A248]" },
+  PostgreSQL: { icon: SiPostgresql, color: "text-[#4169E1]" },
+  Prisma: { icon: SiPrisma, color: "text-[#2D3748]" },
+  Docker: { icon: SiDocker, color: "text-[#2496ED]" },
+  "OpenAI API": { icon: SiOpenai, color: "text-white" },
 };
+
+/* ---------------- DATA ---------------- */
 
 const experiences = experiencesData
   .filter((e) => e.published)
   .sort((a, b) => a.order - b.order);
+
+/* ---------------- COMPONENT ---------------- */
 
 export default function Experience() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
     <PageTransition>
-      <div className="container max-w-3xl mx-auto px-6 py-20 bg-black text-white min-h-screen selection:bg-blue-500/30">
-        <header className="mb-20">
-          <h1 className="text-3xl font-bold tracking-tight">Experience</h1>
+      <div className="container max-w-4xl mx-auto px-6 py-24">
+        {/* Header */}
+        <header className="mb-24">
+          <h1 className="text-5xl md:text-6xl font-black tracking-tight uppercase">
+            Experience
+          </h1>
+          <p className="mt-4 text-muted-foreground max-w-xl">
+            Companies I’ve worked with, the problems I solved, and the
+            technologies I used.
+          </p>
         </header>
 
-        <div className="space-y-4">
+        {/* Experience List */}
+        <div className="space-y-10">
           {experiences.map((exp, i) => {
-            const isExpanded = expandedId === exp.id;
+            const isCurrent = exp.current;
+            const isExpanded = isCurrent || expandedId === exp.id;
 
             return (
-              <motion.div
+              <motion.article
                 key={exp.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="border-b border-white/5 last:border-0 pb-4"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="relative"
               >
-                {/* --- SEPARATE DIV: CLICKABLE HEADER --- */}
-                <div
-                  onClick={() => setExpandedId(isExpanded ? null : exp.id)}
-                  className="flex items-center justify-between py-4 cursor-pointer group hover:bg-white/[0.02] px-4 -mx-4 rounded-xl transition-all"
-                >
-                  <div className="flex gap-4 items-center">
-                    {/* Brand Logo */}
-                    <div className="h-10 w-10 rounded-lg bg-[#111] border border-white/10 flex items-center justify-center shrink-0">
-                      <span className="text-sm font-bold text-zinc-500">
-                        {exp.company[0]}
-                      </span>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <h2 className="text-base font-semibold text-white transition-colors group-hover:text-blue-400">
-                          {exp.company}
-                        </h2>
-                        {/* Social/Link Icons */}
-                        <div className="flex items-center gap-2 text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <FiGlobe className="w-3 h-3 hover:text-white" />
-                          <FiGithub className="w-3 h-3 hover:text-white" />
-                          <FiChevronDown
-                            className={`w-3 h-3 transition-transform duration-300 ${isExpanded ? "rotate-180 text-blue-400" : ""}`}
-                          />
-                        </div>
-                      </div>
-                      <p className="text-zinc-500 text-xs font-medium">
-                        {exp.position}
+                <div className="rounded-2xl border border-border bg-card/50 hover:bg-card transition shadow-sm">
+                  {/* HEADER */}
+                  <button
+                    onClick={() => {
+                      if (!isCurrent) {
+                        setExpandedId(isExpanded ? null : exp.id);
+                      }
+                    }}
+                    className={`w-full flex items-center justify-between gap-6 p-6 text-left ${
+                      !isCurrent ? "cursor-pointer" : "cursor-default"
+                    }`}
+                  >
+                    {/* Left */}
+                    <div className="space-y-1">
+                      <h2 className="text-xl font-semibold">{exp.company}</h2>
+                      <p className="text-sm text-muted-foreground">
+                        {exp.position} · {exp.employmentType}
                       </p>
-                    </div>
-                  </div>
 
-                  {/* Right Side Meta */}
-                  <div className="text-right shrink-0">
-                    <p className="text-zinc-400 text-xs font-mono">
-                      {exp.period}
-                    </p>
-                    <p className="text-zinc-600 text-[10px] mt-1 uppercase tracking-wider">
-                      {exp.location}
-                    </p>
-                  </div>
-                </div>
-
-                {/* --- SEPARATE DIV: ACCORDION DETAILS --- */}
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pl-14 pr-4 pb-6 pt-2 space-y-6">
-                        {/* Skills Cloud */}
-                        <div className="flex flex-wrap gap-4">
-                          {exp.technologies?.map((tech) => {
-                            const { icon: Icon, color } = getTechIcon(tech);
-                            return (
-                              <div
-                                key={tech}
-                                className="flex items-center gap-2 bg-white/[0.03] border border-white/5 px-3 py-1.5 rounded-full transition-colors hover:border-white/20"
-                              >
-                                {Icon && (
-                                  <Icon className={`${color} text-sm`} />
-                                )}
-                                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tighter">
-                                  {tech}
-                                </span>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        {/* Description List */}
-                        <ul className="space-y-3">
-                          {exp.description.map((item, j) => (
-                            <li
-                              key={j}
-                              className="text-sm text-zinc-400 leading-relaxed flex gap-3"
-                            >
-                              <span className="text-blue-500 mt-1.5 h-1 w-1 rounded-full shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground mt-2">
+                        <span className="flex items-center gap-1">
+                          <FiCalendar /> {exp.period}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FiMapPin /> {exp.location}
+                        </span>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                    </div>
+
+                    {/* Right */}
+                    <div className="flex items-center gap-3">
+                      {exp.link && (
+                        <a
+                          href={exp.link}
+                          target="_blank"
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-muted-foreground hover:text-foreground"
+                        >
+                          <FiExternalLink />
+                        </a>
+                      )}
+
+                      {!isCurrent && (
+                        <FiChevronDown
+                          className={`transition-transform ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+
+                      {isCurrent && (
+                        <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                      )}
+                    </div>
+                  </button>
+
+                  {/* CONTENT */}
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pt-2 space-y-6">
+                          {/* Description */}
+                          <ul className="space-y-3">
+                            {exp.description.map((item, j) => (
+                              <li
+                                key={j}
+                                className="text-sm text-muted-foreground leading-relaxed flex gap-3"
+                              >
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-3">
+                            {exp.technologies?.map((tech) => {
+                              const IconData = techIcons[tech];
+                              if (!IconData) return null;
+
+                              const Icon = IconData.icon;
+
+                              return (
+                                <div
+                                  key={tech}
+                                  className="flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-3 py-1.5 text-xs font-medium"
+                                >
+                                  <Icon
+                                    className={`${IconData.color} text-sm`}
+                                  />
+                                  {tech}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.article>
             );
           })}
         </div>
-
-        {/* Simplified Education */}
-        <footer className="mt-32 pt-12 border-t border-white/5">
-          <div className="flex items-baseline justify-between group cursor-default">
-            <div>
-              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-zinc-700 mb-4">
-                Academic
-              </h3>
-              <p className="text-lg font-bold text-zinc-300">
-                Uttarakhand University
-              </p>
-              <p className="text-sm text-zinc-500 italic">
-                Bachelor of Computer Science
-              </p>
-            </div>
-            <p className="text-xs font-mono text-zinc-600">2022 — 2025</p>
-          </div>
-        </footer>
       </div>
     </PageTransition>
   );
