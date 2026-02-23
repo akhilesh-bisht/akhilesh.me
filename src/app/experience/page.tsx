@@ -17,10 +17,10 @@ import {
   SiNodedotjs,
   SiJavascript,
   SiMongodb,
-  SiDocker,
   SiOpenai,
-  SiPostgresql,
-  SiPrisma,
+  SiHtml5,
+  SiCss3,
+  SiExpress,
 } from "react-icons/si";
 
 import experiencesData from "@/data/experiences.json";
@@ -29,17 +29,17 @@ import { PageTransition } from "@/components/ui/page-transition";
 /* ---------------- ICON MAP ---------------- */
 
 const techIcons: Record<string, { icon: any; color: string }> = {
-  React: { icon: SiReact, color: "text-[#61DAFB]" },
-  "Next.js": { icon: SiNextdotjs, color: "text-foreground" },
-  Tailwind: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
-  TypeScript: { icon: SiTypescript, color: "text-[#3178C6]" },
-  JavaScript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
-  Node: { icon: SiNodedotjs, color: "text-[#339933]" },
-  MongoDB: { icon: SiMongodb, color: "text-[#47A248]" },
-  PostgreSQL: { icon: SiPostgresql, color: "text-[#4169E1]" },
-  Prisma: { icon: SiPrisma, color: "text-[#2D3748]" },
-  Docker: { icon: SiDocker, color: "text-[#2496ED]" },
-  "OpenAI API": { icon: SiOpenai, color: "text-white" },
+  react: { icon: SiReact, color: "text-[#61DAFB]" },
+  nextjs: { icon: SiNextdotjs, color: "text-foreground" },
+  tailwind: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
+  typescript: { icon: SiTypescript, color: "text-[#3178C6]" },
+  javascript: { icon: SiJavascript, color: "text-[#F7DF1E]" },
+  nodejs: { icon: SiNodedotjs, color: "text-[#339933]" },
+  expressjs: { icon: SiExpress, color: "text-[#000000] dark:text-white" },
+  mongodb: { icon: SiMongodb, color: "text-[#47A248]" },
+  openaiapi: { icon: SiOpenai, color: "text-white" },
+  html: { icon: SiHtml5, color: "text-[#E34F26]" },
+  css: { icon: SiCss3, color: "text-[#1572B6]" },
 };
 
 /* ---------------- DATA ---------------- */
@@ -52,20 +52,12 @@ const experiences = experiencesData
 
 export default function Experience() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
-
+  const normalizeTech = (tech: string) =>
+    tech.toLowerCase().replace(/[^a-z0-9]/g, "");
   return (
     <PageTransition>
-      <div className="container max-w-4xl mx-auto px-6 py-24">
+      <div className="container max-w-3xl mx-auto px-2 py-8">
         {/* Header */}
-        <header className="mb-24">
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight uppercase">
-            Experience
-          </h1>
-          <p className="mt-4 text-muted-foreground max-w-xl">
-            Companies I’ve worked with, the problems I solved, and the
-            technologies I used.
-          </p>
-        </header>
 
         {/* Experience List */}
         <div className="space-y-10">
@@ -164,9 +156,20 @@ export default function Experience() {
 
                           {/* Skills */}
                           <div className="flex flex-wrap gap-3">
-                            {exp.technologies?.map((tech) => {
-                              const IconData = techIcons[tech];
-                              if (!IconData) return null;
+                            {exp.technologies.map((tech) => {
+                              const key = normalizeTech(tech);
+                              const IconData = techIcons[key];
+
+                              if (!IconData) {
+                                return (
+                                  <span
+                                    key={tech}
+                                    className="text-xs text-muted-foreground border border-border rounded-full px-3 py-1"
+                                  >
+                                    {tech}
+                                  </span>
+                                );
+                              }
 
                               const Icon = IconData.icon;
 
