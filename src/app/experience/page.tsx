@@ -1,139 +1,181 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FiArrowUpRight, FiMapPin } from "react-icons/fi";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FiGlobe,
+  FiGithub,
+  FiTwitter,
+  FiLinkedin,
+  FiChevronDown,
+  FiMapPin,
+} from "react-icons/fi";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiDocker,
+} from "react-icons/si";
 import experiencesData from "@/data/experiences.json";
 import { PageTransition } from "@/components/ui/page-transition";
+
+const getTechIcon = (tech: string) => {
+  const icons: Record<string, { icon: any; color: string }> = {
+    React: { icon: SiReact, color: "text-[#61DAFB]" },
+    Nextjs: { icon: SiNextdotjs, color: "text-white" },
+    Tailwind: { icon: SiTailwindcss, color: "text-[#06B6D4]" },
+    TypeScript: { icon: SiTypescript, color: "text-[#3178C6]" },
+    Node: { icon: SiNodedotjs, color: "text-[#339933]" },
+    PostgreSQL: { icon: SiPostgresql, color: "text-[#4169E1]" },
+    Prisma: { icon: SiPrisma, color: "text-[#2D3748]" },
+    Docker: { icon: SiDocker, color: "text-[#2496ED]" },
+  };
+  return icons[tech] || { icon: null, color: "" };
+};
 
 const experiences = experiencesData
   .filter((e) => e.published)
   .sort((a, b) => a.order - b.order);
 
 export default function Experience() {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
   return (
     <PageTransition>
-      <div className="container max-w-2xl mx-auto px-6 py-20">
-        {/* Header Section */}
+      <div className="container max-w-3xl mx-auto px-6 py-20 bg-black text-white min-h-screen selection:bg-blue-500/30">
         <header className="mb-20">
-          <motion.h1
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-4xl font-semibold tracking-tight text-foreground"
-          >
-            Experience
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground mt-3 text-lg"
-          >
-            A journey through the teams I’ve joined and the products I’ve helped
-            craft.
-          </motion.p>
+          <h1 className="text-3xl font-bold tracking-tight">Experience</h1>
         </header>
 
-        {/* Timeline Section */}
-        <div className="space-y-20">
-          {experiences.map((exp, i) => (
-            <motion.article
-              key={exp.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10"
-            >
-              {/* Date/Period Side */}
-              <div className="text-sm font-medium text-muted-foreground/60 pt-1 uppercase tracking-widest">
-                {exp.period}
-              </div>
+        <div className="space-y-4">
+          {experiences.map((exp, i) => {
+            const isExpanded = expandedId === exp.id;
 
-              {/* Content Side */}
-              <div className="relative">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between group">
-                    <h2 className="text-xl font-medium text-foreground flex items-center gap-2">
-                      {exp.link ? (
-                        <a
-                          href={exp.link}
-                          target="_blank"
-                          className="hover:underline decoration-muted-foreground/30 underline-offset-4 flex items-center gap-1"
-                        >
-                          {exp.company}
-                          <FiArrowUpRight className="text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                      ) : (
-                        exp.company
-                      )}
-
-                      {exp.current && (
-                        <span className="ml-2 flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                      )}
-                    </h2>
-                  </div>
-
-                  <p className="text-foreground/80 font-medium">
-                    {exp.position}
-                  </p>
-
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <FiMapPin className="h-3.5 w-3.5" />
-                    {exp.location}
-                  </div>
-
-                  {/* Tech stack - Pills style */}
-                  {exp.technologies && (
-                    <div className="flex flex-wrap gap-1.5 mt-2">
-                      {exp.technologies.map((tech: string) => (
-                        <span
-                          key={tech}
-                          className="rounded-full bg-secondary/50 border border-border/50 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground uppercase tracking-wider"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+            return (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="border-b border-white/5 last:border-0 pb-4"
+              >
+                {/* --- SEPARATE DIV: CLICKABLE HEADER --- */}
+                <div
+                  onClick={() => setExpandedId(isExpanded ? null : exp.id)}
+                  className="flex items-center justify-between py-4 cursor-pointer group hover:bg-white/[0.02] px-4 -mx-4 rounded-xl transition-all"
+                >
+                  <div className="flex gap-4 items-center">
+                    {/* Brand Logo */}
+                    <div className="h-10 w-10 rounded-lg bg-[#111] border border-white/10 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-zinc-500">
+                        {exp.company[0]}
+                      </span>
                     </div>
-                  )}
 
-                  {/* Description - Modern minimal list */}
-                  <ul className="mt-6 space-y-3">
-                    {exp.description.map((item: string, j: number) => (
-                      <li
-                        key={j}
-                        className="text-sm text-muted-foreground leading-relaxed hover:text-foreground transition-colors"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                    <div>
+                      <div className="flex items-center gap-3">
+                        <h2 className="text-base font-semibold text-white transition-colors group-hover:text-blue-400">
+                          {exp.company}
+                        </h2>
+                        {/* Social/Link Icons */}
+                        <div className="flex items-center gap-2 text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <FiGlobe className="w-3 h-3 hover:text-white" />
+                          <FiGithub className="w-3 h-3 hover:text-white" />
+                          <FiChevronDown
+                            className={`w-3 h-3 transition-transform duration-300 ${isExpanded ? "rotate-180 text-blue-400" : ""}`}
+                          />
+                        </div>
+                      </div>
+                      <p className="text-zinc-500 text-xs font-medium">
+                        {exp.position}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right Side Meta */}
+                  <div className="text-right shrink-0">
+                    <p className="text-zinc-400 text-xs font-mono">
+                      {exp.period}
+                    </p>
+                    <p className="text-zinc-600 text-[10px] mt-1 uppercase tracking-wider">
+                      {exp.location}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+
+                {/* --- SEPARATE DIV: ACCORDION DETAILS --- */}
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-14 pr-4 pb-6 pt-2 space-y-6">
+                        {/* Skills Cloud */}
+                        <div className="flex flex-wrap gap-4">
+                          {exp.technologies?.map((tech) => {
+                            const { icon: Icon, color } = getTechIcon(tech);
+                            return (
+                              <div
+                                key={tech}
+                                className="flex items-center gap-2 bg-white/[0.03] border border-white/5 px-3 py-1.5 rounded-full transition-colors hover:border-white/20"
+                              >
+                                {Icon && (
+                                  <Icon className={`${color} text-sm`} />
+                                )}
+                                <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tighter">
+                                  {tech}
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Description List */}
+                        <ul className="space-y-3">
+                          {exp.description.map((item, j) => (
+                            <li
+                              key={j}
+                              className="text-sm text-zinc-400 leading-relaxed flex gap-3"
+                            >
+                              <span className="text-blue-500 mt-1.5 h-1 w-1 rounded-full shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Education Section */}
-        <motion.footer
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-32 pt-12 border-t border-border/40"
-        >
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/50 mb-6">
-            Education
-          </h2>
-          <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2">
+        {/* Simplified Education */}
+        <footer className="mt-32 pt-12 border-t border-white/5">
+          <div className="flex items-baseline justify-between group cursor-default">
             <div>
-              <p className="text-lg font-medium">Uttarakhand University</p>
-              <p className="text-muted-foreground">
+              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-zinc-700 mb-4">
+                Academic
+              </h3>
+              <p className="text-lg font-bold text-zinc-300">
+                Uttarakhand University
+              </p>
+              <p className="text-sm text-zinc-500 italic">
                 Bachelor of Computer Science
               </p>
             </div>
-            <p className="text-sm text-muted-foreground font-mono italic">
-              2022 — 2025
-            </p>
+            <p className="text-xs font-mono text-zinc-600">2022 — 2025</p>
           </div>
-        </motion.footer>
+        </footer>
       </div>
     </PageTransition>
   );

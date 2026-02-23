@@ -8,15 +8,26 @@ import socialLinks from "@/data/social-links.json";
 import Image from "next/image";
 import { TechStack } from "@/components/ui/tech-badge";
 import { GitHubActivityBlock } from "@/components/GitHubActivityBlock";
+import CurrentCompany from "./experience/CurrentExprince";
 
-const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
-  FiMail,
-  FiGlobe,
-  FaLinkedin,
-  FaGithub,
-};
+const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } =
+  {
+    FiMail,
+    FiGlobe,
+    FaLinkedin,
+    FaGithub,
+  };
 
-const SKILL_ICONS = ["react", "next", "node", "mongodb", "typescript", "javascript", "tailwind", "github"];
+const SKILL_ICONS = [
+  "react",
+  "next",
+  "node",
+  "mongodb",
+  "typescript",
+  "javascript",
+  "tailwind",
+  "github",
+];
 
 export default function Home() {
   const heroSocialLinks = socialLinks.filter((link) => link.published);
@@ -46,7 +57,8 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-2">
               {heroSocialLinks.map((link) => {
-                const IconComponent = IconMap[link.icon as keyof typeof IconMap];
+                const IconComponent =
+                  IconMap[link.icon as keyof typeof IconMap];
                 return (
                   <a
                     key={link.id}
@@ -63,7 +75,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* Skills: Icons in a row */}
         <section className="mb-12">
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
@@ -73,7 +84,7 @@ export default function Home() {
             <TechStack technologies={SKILL_ICONS} showNames={false} />
           </div>
         </section>
-
+        <CurrentCompany />
         {/* GitHub Activity */}
         <GitHubActivityBlock />
       </div>
