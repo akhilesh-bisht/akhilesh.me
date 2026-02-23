@@ -23,12 +23,11 @@ export default function CurrentCompanyCompact() {
       </div>
 
       {/* Card */}
-      <div className="flex items-center justify-between rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-black px-4 py-3 transition-colors">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-black px-4 py-3 transition-colors">
         {/* Left */}
         <div className="flex items-center gap-4">
           {/* Logo */}
-
-          <div className=" rounded-sm  bg-zinc-100 dark:bg-[#111] border border-zinc-200 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
+          <div className="rounded-sm bg-zinc-100 dark:bg-[#111] border border-zinc-200 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
             <Image
               src="/c.png"
               alt="Scriptguru Digital Solutions logo"
@@ -38,6 +37,7 @@ export default function CurrentCompanyCompact() {
               priority
             />
           </div>
+
           {/* Info */}
           <div>
             <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function CurrentCompanyCompact() {
               </h3>
 
               {/* Icons */}
-              <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-600">
+              <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-600 flex-wrap sm:flex-nowrap">
                 <a
                   href="https://scriptgurudigitalsolutions.com"
                   target="_blank"
@@ -75,8 +75,8 @@ export default function CurrentCompanyCompact() {
         </div>
 
         {/* Right */}
-        <div className="text-right shrink-0">
-          <p className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+        <div className="text-left sm:text-right shrink-0">
+          <p className="text-[11px] sm:text-xs font-mono text-zinc-500 dark:text-zinc-400">
             Sep 2025 — Present
           </p>
           <p className="text-[11px] text-zinc-500 dark:text-zinc-600 mt-1">

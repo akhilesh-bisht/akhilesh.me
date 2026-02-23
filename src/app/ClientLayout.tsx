@@ -28,9 +28,17 @@ function Navigation() {
   useEffect(() => {
     if (themeInitialized.current) return;
     themeInitialized.current = true;
-    const stored = localStorage.getItem("portfolio-theme") as "dark" | "light" | null;
+    const stored = localStorage.getItem("portfolio-theme") as
+      | "dark"
+      | "light"
+      | null;
     if (stored === "dark" || stored === "light") setTheme(stored);
-    else setTheme(window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    else
+      setTheme(
+        window.matchMedia?.("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light",
+      );
     setMounted(true);
   }, []);
 
@@ -41,10 +49,16 @@ function Navigation() {
       setScrolled(isScrolled);
       if (isScrolled && !showScrollBtn) {
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-        scrollTimeoutRef.current = setTimeout(() => setShowScrollBtn(true), 100);
+        scrollTimeoutRef.current = setTimeout(
+          () => setShowScrollBtn(true),
+          100,
+        );
       } else if (!isScrolled && showScrollBtn) {
         if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-        scrollTimeoutRef.current = setTimeout(() => setShowScrollBtn(false), 100);
+        scrollTimeoutRef.current = setTimeout(
+          () => setShowScrollBtn(false),
+          100,
+        );
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -66,7 +80,8 @@ function Navigation() {
   const toggleTheme = () => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
-      if (typeof window !== "undefined") localStorage.setItem("portfolio-theme", next);
+      if (typeof window !== "undefined")
+        localStorage.setItem("portfolio-theme", next);
       return next;
     });
   };
@@ -82,12 +97,9 @@ function Navigation() {
           scrolled && "shadow-lg shadow-black/5 dark:shadow-black/10",
         )}
       >
-        <Link
-          href="/"
-          className="flex items-center gap-2 shrink-0"
-        >
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <img
-            src="/Anime%20Hypio%20Kids.webp"
+            src="/avatar.png"
             alt="Akhilesh Bisht"
             className="w-8 h-8 rounded-lg object-cover"
           />
@@ -105,7 +117,7 @@ function Navigation() {
               onClick={() => setMobileOpen(false)}
               className={cn(
                 "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
-                currentPath === item.href && "text-foreground"
+                currentPath === item.href && "text-foreground",
               )}
             >
               {item.label}
@@ -114,13 +126,6 @@ function Navigation() {
         </div>
 
         <div className="flex items-center gap-1">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <FiSun className="w-4 h-4" /> : <FiMoon className="w-4 h-4" />}
-          </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={cn(
@@ -132,6 +137,17 @@ function Navigation() {
           >
             <FiArrowUp className="w-4 h-4" />
           </button>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <FiSun className="w-4 h-4" />
+            ) : (
+              <FiMoon className="w-4 h-4" />
+            )}
+          </button>
 
           {/* Mobile menu toggle */}
           <button
@@ -139,7 +155,11 @@ function Navigation() {
             className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+            {mobileOpen ? (
+              <FiX className="w-5 h-5" />
+            ) : (
+              <FiMenu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </nav>
@@ -157,7 +177,7 @@ function Navigation() {
                   "py-2 px-3 text-sm rounded-md transition-colors",
                   currentPath === item.href
                     ? "text-foreground bg-muted/50"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
                 )}
               >
                 {item.label}

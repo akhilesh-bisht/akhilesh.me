@@ -38,9 +38,9 @@ export default function Home() {
         {/* Hero: Image left, name + about right */}
         <section className="mb-12 flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-10">
           <div className="flex-shrink-0">
-            <div className="overflow-hidden rounded-xl w-32 h-32 sm:w-40 sm:h-40 shadow-lg">
+            <div className="overflow-hidden rounded-xl w-full h-full sm:w-40 sm:h-40 shadow-lg">
               <Image
-                src="/Anime%20Hypio%20Kids.webp"
+                src="/logo.jpg"
                 height={160}
                 width={160}
                 alt="Akhilesh Bisht"
