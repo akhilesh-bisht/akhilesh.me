@@ -10,7 +10,7 @@
   {
     "id": "linkedin",
     "name": "LinkedIn",
-    "url": "https://www.linkedin.com/in/akhilesh-bisht/",
+    "url": "https://www.linkedin.com/in/akhileshdev/",
     "icon": "FaLinkedin",
     "order": 1,
     "published": true
@@ -21,14 +21,6 @@
     "url": "https://github.com/akhilesh-bisht",
     "icon": "FaGithub",
     "order": 2,
-    "published": true
-  },
-  {
-    "id": "portfolio",
-    "name": "Portfolio",
-    "url": "https://akhilesj.me",
-    "icon": "FiGlobe",
-    "order": 3,
     "published": true
   }
 ]
