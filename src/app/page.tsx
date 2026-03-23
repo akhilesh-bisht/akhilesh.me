@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <PageTransition>
       <CatFollower />
-      <MusicPage />
+
       <div className="container max-w-3xl mx-auto px-4 sm:px-6">
         {/* Hero: Image left, name + about right */}
         <section className="mb-12 flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-10">
@@ -81,6 +81,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <MusicPage />
         {/* Skills: Icons in a row */}
         <section className="mb-12">
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
