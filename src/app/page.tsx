@@ -9,7 +9,8 @@ import Image from "next/image";
 import { TechStack } from "@/components/ui/tech-badge";
 import { GitHubActivityBlock } from "@/components/GitHubActivityBlock";
 import CurrentCompany from "./experience/CurrentExprince";
-
+import CatFollower from "@/components/Running";
+import MusicPage from "@/components/Shopify";
 const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } =
   {
     FiMail,
@@ -27,6 +28,9 @@ const SKILL_ICONS = [
   "javascript",
   "tailwind",
   "github",
+  "python",
+  "sql",
+  "openai",
 ];
 
 export default function Home() {
@@ -34,6 +38,8 @@ export default function Home() {
 
   return (
     <PageTransition>
+      <CatFollower />
+      <MusicPage />
       <div className="container max-w-3xl mx-auto px-4 sm:px-6">
         {/* Hero: Image left, name + about right */}
         <section className="mb-12 flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-10">
