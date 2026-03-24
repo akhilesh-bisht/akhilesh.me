@@ -50,6 +50,7 @@ export default function ModernFollower() {
 
   return (
     <div
+      className="hidden md:flex"
       style={{
         position: "fixed",
         left: renderPos.x,
