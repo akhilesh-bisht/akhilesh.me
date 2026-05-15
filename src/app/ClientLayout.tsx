@@ -6,11 +6,13 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
 import { FiSun, FiMoon, FiArrowUp, FiMenu, FiX } from "react-icons/fi";
+import { VisitCounter } from "@/components/VisitCounter";
 
 const NAV_ITEMS = [
   { href: "/experience", label: "Work", icon: null },
   { href: "/projects", label: "Projects", icon: null },
   { href: "/github", label: "GitHub", icon: null },
+  { href: "/contact", label: "Contact", icon: null },
 ];
 
 function Navigation() {
@@ -200,12 +202,14 @@ export default function ClientLayout({
     pathname === "/" ||
     pathname.startsWith("/experience") ||
     pathname.startsWith("/projects") ||
-    pathname.startsWith("/github");
+    pathname.startsWith("/github") ||
+    pathname.startsWith("/contact");
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-1 pt-24 pb-12">{children}</main>
+      <VisitCounter />
       {showFooter && (
         <footer className="border-t border-border/50 py-8">
           <div className="container max-w-4xl mx-auto px-4">

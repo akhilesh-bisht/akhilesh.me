@@ -31,6 +31,11 @@ const SKILL_ICONS = [
   "python",
   "sql",
   "openai",
+  "aws",
+  "docker",
+  "linux",
+  "nginx",
+  "terraform",
 ];
 
 export default function Home() {
@@ -78,6 +83,21 @@ export default function Home() {
                   </a>
                 );
               })}
+            </div>
+            <div className="flex flex-wrap gap-3 mt-4">
+              <a
+                href="/resume/Akhilesh_Bisht_Resume.pdf"
+                download="Akhilesh_Bisht_Resume.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+              >
+                📥 Download Resume
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 text-foreground hover:bg-primary/10 transition-colors text-sm font-medium"
+              >
+                💬 Get in Touch
+              </a>
             </div>
           </div>
         </section>
