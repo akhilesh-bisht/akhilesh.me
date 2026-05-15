@@ -25,6 +25,8 @@
       "ShadCN UI"
     ],
     "backend": ["Node.js", "Express.js", "MongoDB", "RESTful APIs"],
+    "cloud": ["AWS", "EC2", "S3", "Lambda", "RDS"],
+    "devops": ["Docker", "Git", "GitHub", "CI/CD", "Deployment"],
     "tools": ["Git", "GitHub", "Postman"],
     "practices": [
       "Responsive Design",
