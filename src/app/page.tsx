@@ -11,6 +11,8 @@ import { GitHubActivityBlock } from "@/components/GitHubActivityBlock";
 import CurrentCompany from "./experience/CurrentExprince";
 import CatFollower from "@/components/Running";
 import MusicPage from "@/components/Shopify";
+import { Download  } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 const IconMap: { [key: string]: React.ComponentType<{ className?: string }> } =
   {
     FiMail,
@@ -90,13 +92,13 @@ export default function Home() {
                 download="Akhilesh_Bisht_Resume.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
               >
-                📥 Download Resume
+                <Download size={14} /> Download Resume
               </a>
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/30 text-foreground hover:bg-primary/10 transition-colors text-sm font-medium"
               >
-                💬 Get in Touch
+                <MessageCircle size={14} /> Get in Touch
               </a>
             </div>
           </div>
