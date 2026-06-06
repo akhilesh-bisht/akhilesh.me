@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: "/experience", label: "Work", icon: null },
   { href: "/projects", label: "Projects", icon: null },
   { href: "/github", label: "GitHub", icon: null },
+  { href: "/blog", label: "Blog", icon: null },
   { href: "/contact", label: "Contact", icon: null },
 ];
 
@@ -203,6 +204,7 @@ export default function ClientLayout({
     pathname.startsWith("/experience") ||
     pathname.startsWith("/projects") ||
     pathname.startsWith("/github") ||
+    pathname.startsWith("/blog") ||
     pathname.startsWith("/contact");
 
   return (
