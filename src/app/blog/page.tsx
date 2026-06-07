@@ -13,18 +13,21 @@ const articles = [
     excerpt:
       "Practical patterns for scalable component architecture, data fetching, and production-ready UI in Next.js.",
     tag: "Frontend",
+    date: "Jun 12, 2026",
   },
   {
     title: "Designing Reliable API Workflows",
     excerpt:
       "How to build APIs that are efficient, secure, and easy to maintain across web and mobile applications.",
     tag: "Backend",
+    date: "May 28, 2026",
   },
   {
     title: "Improving Developer Velocity",
     excerpt:
       "Tools, processes, and practices that help teams ship faster without sacrificing quality.",
     tag: "Productivity",
+    date: "May 10, 2026",
   },
 ];
 
@@ -32,53 +35,59 @@ export default function BlogPage() {
   return (
     <PageTransition>
       <div className="container max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        {/* Header */}
         <section className="mb-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary mb-4">
-            Insights
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Technical writing and project notes.
+          <p className="text-sm font-medium text-primary mb-3">Blog</p>
+
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            Writing about software and design.
           </h1>
+
           <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Explore articles on software architecture, frontend development,
-            backend systems, and the best practices I use to deliver polished
-            products.
+            Thoughts on frontend development, backend systems, architecture,
+            performance, and lessons learned while building products.
           </p>
         </section>
 
-        <div className="grid gap-5">
-          {articles.map((article) => (
+        {/* Articles */}
+        <div className="space-y-8">
+          {articles.map((article, index) => (
             <article
-              key={article.title}
-              className="rounded-3xl border border-border bg-card/70 p-6 transition hover:border-primary/50 hover:shadow-xl hover:shadow-black/5"
+              key={`${article.date}-${index}`}
+              className="group border-b border-border pb-8 last:border-0"
             >
-              <div className="flex items-center justify-between gap-4 mb-4">
-                <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
-                  {article.title}
-                </h2>
-                <span className="rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="flex items-center gap-3 mb-3 text-sm">
+                <span className="text-muted-foreground">
+                  {article.date}
+                </span>
+
+                <span className="h-1 w-1 rounded-full bg-muted-foreground" />
+
+                <span className="text-primary font-medium">
                   {article.tag}
                 </span>
               </div>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
+
+              <h2 className="text-xl sm:text-2xl font-semibold text-foreground transition-colors group-hover:text-primary">
+                {article.title}
+              </h2>
+
+              <p className="mt-3 text-muted-foreground leading-relaxed">
                 {article.excerpt}
               </p>
-              <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <span>Read more</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
+
+              <button className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                Read more
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
             </article>
           ))}
         </div>
 
-        <section className="mt-14 rounded-3xl border border-primary/20 bg-primary/5 p-8 text-center">
-          <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-3">
-            More articles coming soon
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            I’m regularly publishing updates on new projects, architecture
-            patterns, and development workflows. Check back soon for the latest
-            content.
+        {/* Footer Note */}
+        <section className="mt-14 pt-8 border-t border-border">
+          <p className="text-sm text-muted-foreground">
+            More articles and project breakdowns coming soon.
           </p>
         </section>
       </div>

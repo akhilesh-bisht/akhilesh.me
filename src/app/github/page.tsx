@@ -147,8 +147,12 @@ export default function GitHubPage() {
     <PageTransition>
       <div className="container max-w-3xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">GitHub</h1>
-          <p className="text-muted-foreground">Activity, languages, and projects</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">
+            GitHub
+          </h1>
+          <p className="text-muted-foreground">
+            Activity, languages, and projects
+          </p>
         </div>
 
         <a
@@ -157,10 +161,18 @@ export default function GitHubPage() {
           rel="noopener noreferrer"
           className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/40 transition-colors mb-12 group"
         >
-          <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
+          <img
+            src={user.avatar_url}
+            alt={user.login}
+            className="w-16 h-16 rounded-full"
+          />
           <div className="flex-1 min-w-0">
-            <p className="font-semibold group-hover:text-accent transition-colors">@{user.login}</p>
-            {user.bio && <p className="text-sm text-muted-foreground mt-0.5">{user.bio}</p>}
+            <p className="font-semibold group-hover:text-accent transition-colors">
+              @{user.login}
+            </p>
+            {user.bio && (
+              <p className="text-sm text-muted-foreground mt-0.5">{user.bio}</p>
+            )}
             {user.location && (
               <p className="flex items-center gap-1.5 text-xs text-muted-foreground mt-2">
                 <FiMapPin className="w-3 h-3" />
@@ -190,16 +202,16 @@ export default function GitHubPage() {
               <div className="flex gap-[3px] min-w-max">
                 {weekChunks.map((week, weekIndex) => (
                   <div key={weekIndex} className="flex flex-col gap-[3px]">
-                    {week.map((c) => (
-                        <div
-                          key={c.date}
-                          className={cn(
-                            "w-2.5 h-2.5 md:w-3 md:h-3 rounded-[2px] transition-colors",
-                            LEVEL_COLORS[c.level]
-                          )}
-                          title={`${c.date}: ${c.count} contributions`}
-                        />
-                      ))}
+                    {week.map((c, i) => (
+                      <div
+                        key={`${c?.date}-${i}`}
+                        className={cn(
+                          "w-2.5 h-2.5 md:w-3 md:h-3 rounded-[2px] transition-colors",
+                          LEVEL_COLORS[c.level],
+                        )}
+                        title={`${c.date}: ${c.count} contributions`}
+                      />
+                    ))}
                   </div>
                 ))}
               </div>
@@ -208,7 +220,10 @@ export default function GitHubPage() {
               <span>Less</span>
               <div className="flex gap-0.5">
                 {LEVEL_COLORS.map((cls, i) => (
-                  <div key={i} className={cn("w-2.5 h-2.5 rounded-[2px]", cls)} />
+                  <div
+                    key={i}
+                    className={cn("w-2.5 h-2.5 rounded-[2px]", cls)}
+                  />
                 ))}
               </div>
               <span>More</span>
@@ -228,7 +243,8 @@ export default function GitHubPage() {
                   key={lang}
                   className="px-3 py-1.5 text-sm rounded-lg bg-muted/60 text-muted-foreground"
                 >
-                  {lang} <span className="text-muted-foreground/70">({count})</span>
+                  {lang}{" "}
+                  <span className="text-muted-foreground/70">({count})</span>
                 </span>
               ))}
             </div>
