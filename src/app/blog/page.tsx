@@ -35,7 +35,7 @@ const articles = [
 export default function BlogPage() {
   return (
     <PageTransition>
-      <div className="container max-w-2xl mx-auto px-4 sm:px-6 py-10">
+      <div className="container max-w-3xl mx-auto px-4 sm:px-6 py-10">
         {/* Header */}
         <section className="mb-10">
           <p className="text-xs font-medium uppercase tracking-wider text-primary mb-2">
