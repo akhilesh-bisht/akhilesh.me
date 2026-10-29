@@ -84,7 +84,7 @@
     "title": "Platr — Restaurant Management SaaS Platform",
     "period": "2026",
     "description": "Developing a modern SaaS platform for cafés and restaurants to simplify operations and enhance the customer dining experience. Building features including QR-based ordering, digital menu management, order management, kitchen dashboard, dining session management, invoice generation, customer management, and restaurant analytics. Designed to unify restaurant workflows through an intuitive interface and efficient operational tools, with a roadmap for inventory management and AI-powered insights.",
-    "link": "https://plater-five.vercel.app/",
+    "link": "",
     "github": "",
     "type": "Full Stack",
     "technologies": [
