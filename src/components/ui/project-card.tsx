@@ -17,6 +17,7 @@ interface Project {
   type: string;
   period: string;
   featured: boolean;
+  order: number;
 }
 
 interface ProjectCardProps {
