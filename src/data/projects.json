@@ -1,28 +1,126 @@
 [
   {
-    "id": "ai-chatbot-hindi",
-    "title": "AI Chatbot (Hindi Language Support)",
+    "id": "grind-day",
+    "title": "Grind Day — Daily Routine & Task Tracker",
     "period": "2025",
-    "description": "Built an AI-powered chatbot that understands and responds in Hindi using OpenAI and Gemini APIs. Integrated file uploads (PDF, CSV, TXT) using Multer to provide contextual input. Parsed uploaded files to deliver accurate, context-aware responses based on the contents.",
+    "description": "Developed a full-stack daily routine and habit tracking application featuring interactive heatmaps, multi-day streaks, calendar scheduling, and time slot conflict detection. Implemented JWT-based authentication, role-based admin oversight, PWA offline capabilities, and instant task progress analytics.",
+    "link": "https://daily-grind-cvht.onrender.com",
+    "github": "",
+    "type": "Full Stack",
+    "technologies": [
+      "react",
+      "next",
+      "typescript",
+      "node",
+      "express",
+      "mongodb",
+      "tailwind",
+      "vite",
+      "pwa"
+    ],
+    "featured": true,
+    "order": 1,
+    "published": true
+  },
+  {
+    "id": "akhilesh-hyperdrive-9000",
+    "title": "Akhilesh Hyperdrive 9000 - Cyberpunk Focus Deck & Lo-Fi Radio",
+    "period": "2025",
+    "description": "Engineered an interactive cyberpunk developer workstation and audio cassette deck designed for deep programming focus. Features animated dual-spool cassette reels, real-time code streaming backdrops that respond to typing velocity, floating auto-scrolling lyrics, procedural Web Audio API pink noise generation, mechanical keyboard sound effects, and developer telemetry gauges.",
+    "link": "https://akhilesh-nine.vercel.app/",
+    "github": "https://github.com/akhileshbisht2020/akhilesh-hyperdrive-9000",
+    "type": "Frontend / Web Audio",
+    "technologies": ["react", "typescript", "tailwind", "webaudio-api", "vite"],
+    "featured": true,
+    "order": 2,
+    "published": true
+  },
+  {
+    "id": "leadgen-business-prospecting",
+    "title": "LeadGen — Real-Data Lead Generation & CRM Platform",
+    "period": "2026",
+    "description": "Built a full-stack business prospecting and CRM platform that retrieves real business data from OpenStreetMap Overpass API, Google Places API, and Gemini-powered Google Search Grounding. Implemented dynamic lead discovery, MongoDB persistence, searchable and filterable lead management, status tracking, activity notes, dashboard analytics, and Excel exports using SheetJS. Designed transparent empty states and accurate handling of unavailable contact information to avoid displaying fabricated data.",
+    "link": "https://leadzen-zbjb.onrender.com/",
+    "github": "",
+    "type": "Full Stack / AI",
+    "technologies": [
+      "react",
+      "next",
+      "typescript",
+      "node",
+      "express",
+      "mongodb",
+      "gemini",
+      "tailwind",
+      "vite"
+    ],
+    "featured": true,
+    "order": 3,
+    "published": true
+  },
+  {
+    "id": "paid-community-manager-bot",
+    "title": "Paid Community Manager Bot — Telegram Membership Automation",
+    "period": "2026",
+    "description": "Developed a Telegram-based SaaS platform to automate paid community membership management and subscription lifecycles. Implemented subscription plans, payment link generation, payment verification, automated invite links, membership tracking, renewal reminders, and automatic access revocation for expired subscriptions. Built a protected FastAPI admin dashboard with member search, active and expired membership filters, subscription details, and membership management tools to reduce manual administration for community owners.",
     "link": "",
     "github": "",
-    "type": "AI",
-    "technologies": ["react", "node", "ai", "mongodb"],
+    "type": "Backend / Automation",
+    "technologies": [
+      "python",
+      "fastapi",
+      "telegram-bot",
+      "api",
+      "authentication",
+      "automation"
+    ],
+    "featured": true,
+    "order": 4,
+    "published": true
+  },
+
+  {
+    "id": "platr-restaurant-management",
+    "title": "Platr — Restaurant Management SaaS Platform",
+    "period": "2026",
+    "description": "Developing a modern SaaS platform for cafés and restaurants to simplify operations and enhance the customer dining experience. Building features including QR-based ordering, digital menu management, order management, kitchen dashboard, dining session management, invoice generation, customer management, and restaurant analytics. Designed to unify restaurant workflows through an intuitive interface and efficient operational tools, with a roadmap for inventory management and AI-powered insights.",
+    "link": "",
+    "github": "",
+    "type": "Full Stack",
+    "technologies": [
+      "react",
+      "next",
+      "typescript",
+      "vite",
+      "node",
+      "express",
+      "mongodb",
+      "prisma"
+    ],
     "featured": true,
     "order": 0,
     "published": true
   },
+
   {
-    "id": "visual-email-builder",
-    "title": "Visual Email Sequence Builder",
-    "period": "2025",
-    "description": "Developed a visual drag-and-drop tool to design and automate email campaigns. Secured user sessions with JWT-based authentication. Scheduled emails using Agenda.js and automated campaigns with Nodemailer. Supported dynamic campaign blocks like Delay, Email, and Lead Source.",
+    "id": "ai-meeting-mom-generator",
+    "title": "AI Meeting MOM Generator & Auto-Mailer",
+    "period": "2026",
+    "description": "Developing an AI-powered meeting productivity tool that automates the generation and distribution of Minutes of Meeting (MOM). Designed to extract key discussion points, decisions, and actionable tasks from meeting transcripts, organize action items with assigned responsibilities, and automatically email meeting summaries to participants. Aims to reduce manual documentation, improve accountability, and streamline post-meeting workflows.",
     "link": "",
     "github": "",
-    "type": "Full Stack",
-    "technologies": ["react", "node", "mongodb"],
+    "type": "AI / Full Stack",
+    "technologies": [
+      "react",
+      "typescript",
+      "node",
+      "express",
+      "ai",
+      "llm",
+      "email-automation"
+    ],
     "featured": true,
-    "order": 1,
+    "order": 5,
     "published": true
   }
 ]
